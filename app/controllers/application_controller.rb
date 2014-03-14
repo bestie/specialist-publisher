@@ -8,4 +8,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   SpecialistPublisherWiring.inject_into(self)
+
+  def render_with(locals)
+    render_action_with(action_name, locals)
+  end
+
+  def render_action_with(action_name, locals = {})
+    render([controller_name, action_name].join("/"), locals: locals)
+  end
 end

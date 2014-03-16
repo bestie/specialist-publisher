@@ -3,7 +3,7 @@ require "govspeak"
 class SpecialistDocumentsController < ApplicationController
 
   def index
-    render_with(documents: all_documents)
+    app.list_documents(adapter)
   end
 
   def new
@@ -15,16 +15,11 @@ class SpecialistDocumentsController < ApplicationController
   end
 
   def create
-    document = new_document(form_params)
-
-    store_and_redirect(document, :new)
+    app.create_document(adapter)
   end
 
   def update
-    document = current_document
-    document.update(form_params)
-
-    store_and_redirect(document, :edit)
+    app.update_document(adapter)
   end
 
   def preview
@@ -77,5 +72,13 @@ protected
 
   def build_from_params
     specialist_document_builder.call(form_params)
+  end
+
+  def app
+    @app ||= SpecialistPublisher::ServiceWiring.new
+  end
+
+  def adapter
+    SpecialistPublisher::RailsControllerAdapter.new(self)
   end
 end

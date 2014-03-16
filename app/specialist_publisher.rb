@@ -1,0 +1,1 @@
+SpecialistPublisher ||= Module.new

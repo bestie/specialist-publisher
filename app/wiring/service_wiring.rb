@@ -1,4 +1,8 @@
+$LOAD_PATH.unshift(File.expand_path("../../..", __FILE__))
+
 Dir.glob("app/services/*.rb").each { |f| require f }
+
+SpecialistPublisher ||= Module.new
 
 SpecialistPublisher.module_eval { |sp|
   sp::ServiceWiring = Class.new { |app|

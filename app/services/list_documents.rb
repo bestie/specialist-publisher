@@ -1,5 +1,3 @@
-require "app/specialist_publisher"
-
 SpecialistPublisher.module_eval { |root|
   root::ListDocuments = Class.new {
     def initialize(documents, context)

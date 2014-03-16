@@ -1,4 +1,5 @@
-require "govspeak"
+require "service_wiring"
+require "rails_controller_adapter"
 
 class SpecialistDocumentsController < ApplicationController
 

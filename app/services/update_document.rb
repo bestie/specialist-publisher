@@ -1,5 +1,3 @@
-require "app/specialist_publisher"
-
 SpecialistPublisher.module_eval { |sp|
   sp::UpdateDocument = Class.new {
     define_method(:initialize) { |document_repo, context|

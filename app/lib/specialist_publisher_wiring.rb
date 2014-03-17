@@ -7,6 +7,7 @@ require "specialist_document_exporter"
 require "rendered_specialist_document"
 require "specialist_document_govspeak_to_html_renderer"
 require "specialist_document_header_extractor"
+require "document_presenter"
 
 SpecialistPublisherWiring = DependencyContainer.new do
   define_instance(:specialist_document_editions) { SpecialistDocumentEdition }
@@ -36,6 +37,10 @@ SpecialistPublisherWiring = DependencyContainer.new do
   }
 
   define_instance(:slug_generator) { SlugGenerator }
+
+  define_factory(:document_presenter_factory) {
+    DocumentPresenter.method(:new)
+  }
 
   define_instance(:specialist_document_attachment_processor) {
     SpecialistDocumentAttachmentProcessor.method(:new)

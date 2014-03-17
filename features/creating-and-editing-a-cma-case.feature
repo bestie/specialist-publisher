@@ -31,6 +31,11 @@ Feature: Creating and editing a CMA case
     Then the title has been updated
     And the URL slug remains unchanged
 
+  Scenario: Previewing a draft CMA case
+    Given a draft CMA case exists
+    When I make changes and preview the CMA case
+    Then I see the case body preview
+
   @javascript
   Scenario: Previewing a draft CMA case
     Given a draft CMA case exists

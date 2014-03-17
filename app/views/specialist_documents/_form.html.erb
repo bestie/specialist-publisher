@@ -26,7 +26,9 @@
     <button name='preview'>Preview</button>
     <div class="preview">
       <div class="govspeak">
-        <%= preview.html_safe if respond_to?(:preview) %>
+        <% if document.html_preview.present? %>
+          <%= document.html_preview.html_safe %>
+        <% end %>
       </div>
     </div>
     <%= f.text_field :opened_date, placeholder: '2012-04-23' %>
